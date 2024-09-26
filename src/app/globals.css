@@ -1,29 +1,5 @@
- {
-   {
-    /* *,
-*::before,
-*::after {
+* {
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
-img {
-  max-width: 100%;
-  display: block;
-}
-
-body {
-  background-color: white;
-  color: black;
-}
-
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: black;
-    color: white;
-  }
-} */
-  }
-}
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;

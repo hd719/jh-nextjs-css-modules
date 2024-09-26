@@ -1,8 +1,23 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { css } from "@pigment-css/react";
+
+import "@pigment-css/react/styles.css";
 
 const inter = Inter({ subsets: ["latin"] });
+
+const DARK = "@media (prefers-color-scheme: dark)";
+
+// Using object syntax
+const htmlClass = css(({ theme }) => ({
+  backgroundColor: theme.colorSchemes.light.colors.background,
+  color: theme.colorSchemes.light.colors.foreground,
+  [DARK]: {
+    backgroundColor: theme.colorSchemes.dark.colors.background,
+    color: theme.colorSchemes.dark.colors.foreground,
+  },
+}));
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -11,12 +26,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className={`${inter.className} ${htmlClass}`}>
+      <body>{children}</body>
     </html>
   );
 }
